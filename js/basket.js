@@ -6,22 +6,20 @@ $(".trash").on("click", function (event){
 
 function checkIsEmpty(){
     if($(".counter").length == 0){
-        $(".empty").css('display', "block");
-        $(".common-price").css('display', "none");
-        $(".warning").css('display', "block");
+        $(".empty").show();
+        $(".common-price").hide();
+        $(".warning").show();
         disableForm();
     }
 }
 
 function disableForm(){
-    form.check.checked = false;
-    $(".addres").css('display', "none");
-    form.check.disabled = true;
-    form.flexRadio[0].disabled = true;
-    form.flexRadio[1].disabled = true;
-    form.email.disabled = true;
-    form.phone.disabled = true;
-    form.btn.disabled = true;
+    $("#check1").prop("checked", false);
+    $(".addres").hide();
+    $("input").each(function(){
+        $(this).attr("disabled", true);
+    });
+    $("button").attr("disabled", true);
 }
 
 function setPrice(){
