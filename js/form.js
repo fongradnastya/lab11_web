@@ -9,54 +9,55 @@ $("#check1").on("change", function(){
     }
 });
 
+let hasMistake = false;
+
+function checkInput(){
+    hasMistake = false;
+    checkAddres();
+    checkSize();
+    checkTextInput($(".email"));
+    checkTextInput($(".phone"));
+    if(! hasMistake){
+        let isSer = confirm("Подтвердите отправку формы");
+        if(isSer){
+            console.log("Форма успешно отправлена");
+            deleteProducts();
+        } 
+    }
+}
+
 function checkAddres(){
-    if(checkBox.checked){
+    const addres = $(".addres");
+    if(checkBox.prop("checked")){
         const group = addres.closest(".group-choose");
-        const message = group.querySelector(".error-message");
-        if(addres.value == "Выберите адрес доставки"){
-            addres.classList.add("input-mistake");
-            addres.classList.remove("input-success");
-            message.textContent = "Значение не выбрано";
+        const message = group.find(".error-message");
+        if(addres.val() == "Выберите адрес доставки"){
+            addres.addClass("input-mistake");
+            addres.removeClass("input-success");
+            message.text("Значение не выбрано");
             hasMistake = true;
         }
         else{
-            addres.classList.add("input-success");
-            addres.classList.remove("input-mistake");
-            message.textContent = "";
+            addres.addClass("input-success");
+            addres.removeClass("input-mistake");
+            message.text("");
         }
     }
 }
 
 function checkSize(){
-    let sizeInputs = form.size;
-    for(let id = 0; id < sizeInputs.length; id++){
-        if(sizeInputs[id].value == "Размер"){
-            sizeInputs[id].classList.add("input-mistake");
-            sizeInputs[id].classList.remove("input-success");
+    $(".size").each(function(i, elem)
+    {
+        if ($(this).val() == "Размер"){
+            $(this).addClass("input-mistake");
+            $(this).removeClass("input-success");
             hasMistake = true;
         }
         else{
-            sizeInputs[id].classList.add("input-success");
-            sizeInputs[id].classList.remove("input-mistake");
+            $(this).addClass("input-success");
+            $(this).removeClass("input-mistake"); 
         }
-    }
-}
-
-let hasMistake = false;
-
-function checkInput(){
-    hasMistake = false;
-    //checkAddres();
-    // checkSize();
-    checkTextInput($(".email"));
-    checkTextInput($(".phone"));
-    if(! hasMistake){
-        //let isSer = confirm("Подтвердите отправку формы");
-        //if(isSer){
-            //serializeForm(form);
-            //deleteProducts();
-        //} 
-    }
+    });
 }
 
 function checkTextInput(input){
@@ -85,3 +86,9 @@ $(".main-form").on("submit", (e)=>{
     e.preventDefault();
     checkInput();
 });
+
+function deleteProducts(){
+    const cards = $(".product-card");
+    cards.remove();
+    setPrice();
+}
