@@ -89,53 +89,6 @@ footer {
   margin: 0;
 }
 
-.main__new {
-  transform: translate(0px, 120%);
-  opacity: 0;
-  transition: all 0.8s ease 0s;
-}
-
-.main__new._active {
-  transform: translate(0px, 0px);
-  opacity: 1;
-}
-
-.main__collection {
-  transform: translate(0px, 120%);
-  opacity: 0;
-  transition: all 0.8s ease 0s;
-}
-
-.main__collection._active {
-  transform: translate(0px, 0px);
-  opacity: 1;
-  transition: all 0.8s ease 0.4s;
-}
-
-.model-left {
-  transform: translate(-100%, 0);
-  opacity: 0;
-  transition: all 1s ease 0s;
-}
-
-.model-left._active {
-  transform: translate(0px, 0px);
-  opacity: 1;
-  transition: all 1s ease 0.4s;
-}
-
-.model-right {
-  transform: translate(100%, 0);
-  opacity: 0;
-  transition: all 1s ease 0s;
-}
-
-.model-right._active {
-  transform: translate(0px, 0px);
-  opacity: 1;
-  transition: all 1s ease 0.4s;
-}
-
 /* popular */
 .card img {
   margin: 15px;
